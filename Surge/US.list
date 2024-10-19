@@ -26,3 +26,8 @@ DOMAIN-SUFFIX,sideshow.com
 
 # Walmart
 DOMAIN-SUFFIX,walmart.com
+
+# 物流公司
+
+## USPS
+DOMAIN-SUFFIX,usps.com
