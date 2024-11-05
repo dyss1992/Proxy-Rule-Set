@@ -1,0 +1,16 @@
+#!name=豆瓣去广告
+#!desc=去除豆瓣app的广告
+
+[URL Rewrite]
+^https?:\/\/img\d\.doubanio\.com\/view\/dale-online\/dale_ad\/ - reject
+^https?:\/\/frodo\.douban\.com\/api\/v2\/movie\/banner - reject
+^https?:\/\/erebor\.douban\.com\/count\/\?ad= - reject
+
+[Map Local]
+# 如开启可自行添加主机名 img*.douban.com, frodo.douban.com, erebor.douban.com
+^https?:\/\/api\.douban\.com\/v\d\/app_ads\/ data-type=text data="{}" status-code=200
+
+^https?:\/\/api\.douban\.com\/b.*\/common_ads\?.* data-type=text data="{}" status-code=200
+
+[MITM]
+hostname = %APPEND% api.douban.com
