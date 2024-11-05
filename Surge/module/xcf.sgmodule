@@ -1,0 +1,9 @@
+#!name=下厨房去广告
+#!desc=去除下厨房开屏广告
+
+[URL Rewrite]
+# hostname = api.xiachufang.com
+^https?:\/\/api\.xiachufang\.com\/v\d\/ad/ - reject
+
+[MITM]
+hostname = %APPEND% api.xiachufang.com
