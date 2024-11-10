@@ -1,0 +1,17 @@
+#!name=叮咚买菜去广告
+#!desc=去除叮咚买菜的开屏广告和弹窗广告
+
+[URL Rewrite]
+# 开屏广告
+^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/ - reject
+# 新人弹窗
+^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/getHomeAdPop - reject
+
+[Map Local]
+^https?:\/\/maicai\.api\.ddxq\.mobi\/vip\/getVipAd data-type=text data="{}" status-code=200
+
+[Script]
+replaceBody = type=http-response, pattern=^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/newDetails, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/replace-body.js, requires-body=true, max-size=-1, timeout=30, argument=suspension-%3Erandom_body
+
+[MITM]
+hostname = %APPEND% maicai.api.ddxq.mobi
